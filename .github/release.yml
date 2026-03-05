@@ -1,0 +1,31 @@
+name: Release devcontainer feature to GHCR
+
+on:
+  push:
+    tags:
+      - "v*.*.*"   # triggers on tags like v1.0.0, v1.2.3
+
+jobs:
+  publish:
+    name: Publish feature
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write  # required to push to GHCR
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The official devcontainer action discovers ALL features under ./src
+      # automatically — no need to list them individually. Each subfolder
+      # with a devcontainer-feature.json is packaged and published separately
+      # to ghcr.io/<owner>/<repo>/<feature-id>:<major-version>
+      - name: Publish all features to GHCR
+        uses: devcontainers/action@v1
+        with:
+          publish-features: "true"
+          base-path-to-features: "./src"
+          generate-docs: "true"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

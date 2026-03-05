@@ -1,0 +1,52 @@
+{
+  "scenarios": [
+    {
+      "id": "minimal",
+      "description": "CLI only — no optional components",
+      "options": {
+        "version": "latest",
+        "gui": false,
+        "sampling_drivers": false,
+        "intel_gdb": false,
+        "advisor": false,
+        "self_check": false
+      }
+    },
+    {
+      "id": "gui_only",
+      "description": "CLI + GUI components",
+      "options": {
+        "version": "latest",
+        "gui": true,
+        "sampling_drivers": false,
+        "intel_gdb": false,
+        "advisor": false,
+        "self_check": false
+      }
+    },
+    {
+      "id": "full",
+      "description": "All optional components enabled",
+      "options": {
+        "version": "latest",
+        "gui": true,
+        "sampling_drivers": true,
+        "intel_gdb": true,
+        "advisor": true,
+        "self_check": true
+      }
+    },
+    {
+      "id": "pinned_minimal",
+      "description": "Pinned version, CLI only",
+      "options": {
+        "version": "2025.9.0",
+        "gui": false,
+        "sampling_drivers": false,
+        "intel_gdb": false,
+        "advisor": false,
+        "self_check": false
+      }
+    }
+  ]
+}

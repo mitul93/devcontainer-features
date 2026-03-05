@@ -1,0 +1,80 @@
+name: Test features
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # ── Detect which features changed ────────────────────────────────────────────
+  changed-features:
+    name: Detect changed features
+    runs-on: ubuntu-latest
+    outputs:
+      features: ${{ steps.filter.outputs.changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect changed feature folders
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            vtune:
+              - 'src/vtune/**'
+              - 'test/vtune/**'
+              - 'Makefile'
+            # Add a new entry here for each new feature, e.g.:
+            # my-other-feature:
+            #   - 'src/my-other-feature/**'
+            #   - 'test/my-other-feature/**'
+            #   - 'Makefile'
+
+  # ── Lint ─────────────────────────────────────────────────────────────────────
+  lint:
+    name: Lint shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint
+        run: make lint-all
+
+  # ── Test vtune ───────────────────────────────────────────────────────────────
+  test-vtune:
+    name: Test vtune — ${{ matrix.scenario }}
+    runs-on: ubuntu-latest
+    needs: [lint, changed-features]
+    if: ${{ contains(needs.changed-features.outputs.features, 'vtune') }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - minimal
+          # - gui_only
+          # - pinned_minimal
+          # 'full' excluded — hardware PMU unavailable on GitHub runners
+          # Run locally with: make test-full
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install devcontainer CLI
+        run: npm install -g @devcontainers/cli
+
+      - name: Run test
+        run: make test-vtune-scenario SCENARIO=${{ matrix.scenario }}
+
+  # ── Add a new test-<feature> job for each feature you add ────────────────────
+  # Copy test-vtune above and change:
+  #   - job name
+  #   - changed-features filter condition
+  #   - FEATURES=<feature-id> in the make call
+  #   - matrix scenarios to match your scenarios.json

@@ -1,0 +1,35 @@
+{
+  "id": "vtune",
+  "version": "1.0.0",
+  "name": "Intel VTune Profiler",
+  "description": "Installs Intel VTune Profiler via the official Intel oneAPI APT repository",
+  "documentationURL": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html",
+  "licenseURL": "https://www.intel.com/content/www/us/en/developer/articles/license/end-user-license-agreement.html",
+
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of intel-oneapi-vtune to install (e.g. '2025.9.0' or 'latest')"
+    },
+    "gui": {
+      "type": "boolean",
+      "default": false,
+      "description": "Install VTune GUI components. Requires DISPLAY forwarded into the container."
+    },
+    "sampling_drivers": {
+      "type": "boolean",
+      "default": false,
+      "description": "Install Intel sampling drivers (intel-oneapi-vtune-devel) for hardware PMU-based profiling. Requires SYS_ADMIN capability and access to /proc/sys/kernel/perf_event_paranoid on the host."
+    },
+    "self_check": {
+      "type": "boolean",
+      "default": false,
+      "description": "Run vtune-self-checker.sh after installation to validate the VTune setup."
+    }
+  },
+
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}
