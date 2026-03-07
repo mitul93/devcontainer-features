@@ -53,13 +53,6 @@ jobs:
           echo "Namespace for GHCR: $NAMESPACE"
           echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
 
-      - name: Detect namespace
-        run: |
-          NAMESPACE="${GITHUB_REPOSITORY_OWNER}"
-          echo "Namespace detected: $NAMESPACE"
-          echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
-        id: detect
-
       # ── Publish feature ───────────────────────────
       - name: Publish feature
         run: |
