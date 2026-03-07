@@ -19,8 +19,6 @@ Add the feature to your `.devcontainer/devcontainer.json`:
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `version` | string | `latest` | VTune version to install (e.g. `2025.9.0`). Use `latest` for the newest available. |
-| `gui` | boolean | `false` | Install VTune GUI components. Requires a display server forwarded into the container. |
-| `sampling_drivers` | boolean | `false` | Install hardware PMU sampling drivers for accurate profiling. Requires host-level configuration (see below). |
 | `self_check` | boolean | `false` | Run `vtune-self-checker.sh` after install to validate the setup. |
 
 ## Examples
@@ -36,19 +34,6 @@ Add the feature to your `.devcontainer/devcontainer.json`:
   }
 }
 ```
-
-### With GUI
-
-```json
-{
-  "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
-      "gui": true
-    }
-  }
-}
-```
-
 Also add to your `devcontainer.json`:
 
 ```json
@@ -65,8 +50,6 @@ Also add to your `devcontainer.json`:
   "features": {
     "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
       "version": "2025.9.0",
-      "gui": true,
-      "sampling_drivers": true,
       "self_check": true
     }
   }
@@ -87,32 +70,6 @@ Depending on the options you enable, add the following to your `devcontainer.jso
 | `SYS_PTRACE` | Basic VTune profiling |
 | `SYS_ADMIN` | Hardware sampling drivers (`sampling_drivers=true`) |
 | `seccomp=unconfined` | VTune system call tracing |
-
-## Sampling drivers — host configuration
-
-When `sampling_drivers=true`, VTune uses the CPU Performance Monitoring Unit (PMU)
-for hardware event-based sampling, which is significantly more accurate than
-software-based collection.
-
-This requires setting `perf_event_paranoid` on the **host** (not inside the container,
-as containers share the host kernel):
-
-```bash
-# Temporary (until next reboot)
-sudo sysctl -w kernel.perf_event_paranoid=1
-
-# Permanent
-echo 'kernel.perf_event_paranoid=1' | sudo tee /etc/sysctl.d/99-perf.conf
-sudo sysctl --system
-```
-
-| `perf_event_paranoid` value | Effect |
-|---|---|
-| `3` | Disallow all perf profiling (some distros default) |
-| `2` | Allow only user-space profiling |
-| `1` | Allow kernel profiling (recommended for VTune) |
-| `0` | Allow CPU event sampling |
-| `-1` | No restrictions |
 
 ## Environment
 
