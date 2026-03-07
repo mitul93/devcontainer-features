@@ -4,12 +4,15 @@ A [devcontainer feature](https://containers.dev/implementors/features/) that ins
 
 ## Usage
 
-Add the feature to your `.devcontainer/devcontainer.json`:
+Add the feature to your `.devcontainer/devcontainer.json`. Example,
 
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {}
+    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
+      "version" : "latest",
+      "self_check": false
+    }
   }
 }
 ```
