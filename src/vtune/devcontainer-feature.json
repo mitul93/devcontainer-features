@@ -12,16 +12,6 @@
       "default": "latest",
       "description": "Version of intel-oneapi-vtune to install (e.g. '2025.9.0' or 'latest')"
     },
-    "gui": {
-      "type": "boolean",
-      "default": false,
-      "description": "Install VTune GUI components. Requires DISPLAY forwarded into the container."
-    },
-    "sampling_drivers": {
-      "type": "boolean",
-      "default": false,
-      "description": "Install Intel sampling drivers (intel-oneapi-vtune-devel) for hardware PMU-based profiling. Requires SYS_ADMIN capability and access to /proc/sys/kernel/perf_event_paranoid on the host."
-    },
     "self_check": {
       "type": "boolean",
       "default": false,
