@@ -46,16 +46,17 @@ jobs:
             .
 
       - name: Detect namespace
+        id: detect-namespace
         run: |
-          NAMESPACE="${GITHUB_REPOSITORY_OWNER}"
-          echo "Namespace detected: $NAMESPACE"
+          # github.repository = "author_name/repository_name"
+          NAMESPACE="${GITHUB_REPOSITORY}"  
+          echo "Namespace for GHCR: $NAMESPACE"
           echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
-        id: detect
 
       # ── Publish feature ───────────────────────────
       - name: Publish feature
         run: |
           devcontainer features publish ./src/${{ github.event.inputs.feature }} \
-            --namespace ${{ steps.detect.outputs.namespace }}
+            --namespace ${{ steps.detect-namespace.outputs.namespace }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
