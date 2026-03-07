@@ -57,6 +57,6 @@ jobs:
       - name: Publish feature
         run: |
           devcontainer features publish ./src/${{ github.event.inputs.feature }} \
-            --namespace ${{ steps.detect.outputs.namespace }}
+            --namespace ${{ steps.detect-namespace.outputs.namespace }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
