@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    
+    # Optional: group all action updates together
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    # limit noise
+    open-pull-requests-limit: 5
