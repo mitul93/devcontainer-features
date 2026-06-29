@@ -1,6 +1,6 @@
 {
   "id": "nsight-systems-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "NVIDIA Nsight Systems CLI",
   "description": "Installs NVIDIA Nsight Systems CLI via the official NVIDIA apt package repository",
   "documentationURL": "https://developer.nvidia.com/nsight-systems",
