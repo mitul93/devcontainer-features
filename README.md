@@ -89,5 +89,7 @@ You can trigger test and publishing manually via **Actions → Test & Publish Fe
 
 The published feature reference will be:
 ```
-ghcr.io/mitul93/devcontainer-features/<feature-id>:<major-version>
+ghcr.io/mitul93/devcontainer-features/<feature-id>:<version>
 ```
+
+The version is read from [`devcontainer-feature.json`](src/nsight-systems-cli/devcontainer-feature.json). Before triggering the workflow, bump the version in that file or the publish will overwrite the existing tag.
