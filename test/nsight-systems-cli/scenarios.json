@@ -1,0 +1,20 @@
+{
+  "nsys_cli_latest": {
+    "description": "Latest version of Nsight on ubuntu:26.04",
+    "image": "ubuntu:26.04",
+    "features": {
+      "nsight-systems-cli": {
+          "version": "latest"
+      }
+    }
+  },
+    "nsys_cli_pinned_version": {
+    "description": "Nsight Cli Version 2026.3.1 on ubuntu:26.04",
+    "image": "ubuntu:26.04",
+    "features": {
+      "nsight-systems-cli": {
+          "version": "2026.3.1"
+      }
+    }
+  }
+}
