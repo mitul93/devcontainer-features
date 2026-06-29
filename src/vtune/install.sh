@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # shellcheck disable=SC2034
-DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND=noninteractive
 
 VERSION="${VERSION:-"latest"}"
 SELF_CHECK="${SELF_CHECK:-"false"}"
