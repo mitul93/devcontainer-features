@@ -84,7 +84,7 @@ test-all: _require-feature lint ## Run all CI-safe scenarios for a feature. Usag
 
 .PHONY: test-images
 test-images: _require-feature lint ## Test a feature across multiple base images. Usage: make test-images FEATURE=vtune
-	@for image in debian:trixie-slim debian:bookworm-slim ubuntu:24.04; do \
+	@for image in debian:trixie-slim debian:bookworm-slim ubuntu:24.04 ubuntu:26.04; do \
 	  echo "==> [$(FEATURE)] testing on ${image}..."; \
 	  $(MAKE) test-all FEATURE=$(FEATURE) BASE_IMAGE=${image} || exit 1; \
 	done
