@@ -10,6 +10,7 @@ Features are published to the GitHub Container Registry (GHCR) and can be refere
 
 | Feature | Description | Docs |
 |---|---|---|
+| [nsight-systems-cli](src/nsight-systems-cli) | NVIDIA Nsight Systems CLI | [README](src/nsight-systems-cli/README.md) |
 | [vtune](src/vtune) | Intel VTune Profiler | [README](src/vtune/README.md) |
 
 ---
