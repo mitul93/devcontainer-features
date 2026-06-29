@@ -9,12 +9,30 @@ Add the feature to your `.devcontainer/devcontainer.json`. Example,
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:1": {
+    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
       "version" : "latest",
     }
   }
 }
 ```
+
+By default, the **latest published version** of this feature is used. Both of the following statements are equivalent.
+
+```json
+"ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {}
+"ghcr.io/mitul93/devcontainer-features/nsight-systems-cli": {}
+```
+
+To use a **specific feature version**, append the version tag to the feature reference:
+
+```json
+"ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:1": {}
+"ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:1.1.0": {}
+```
+
+>[!NOTE]
+All published feature versions are available at:
+https://github.com/mitul93/devcontainer-features/pkgs/container/devcontainer-features%2Fnsight-systems-cli/versions
 
 ## Available Versions
 
@@ -41,7 +59,7 @@ Version: 2026.3.1.157-263138048394v0
 ```
 Use only the `YYYY.MAJOR.MINOR` part as the [version option](#options) — for example `2020.2.1`.
 
-> [!NOTE]
+> [!WARNING]
 > Do not use the full version string including the build hash (e.g. `2020.2.1.71-64a8f98`)
 
 ## Options
@@ -57,19 +75,18 @@ Use only the `YYYY.MAJOR.MINOR` part as the [version option](#options) — for e
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
+    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
       "version": "latest"
     }
   }
 }
 ```
-
 ### Pinned version
 
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
+    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
       "version": "2026.3.1"
     }
   }

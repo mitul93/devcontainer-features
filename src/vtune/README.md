@@ -9,7 +9,7 @@ Add the feature to your `.devcontainer/devcontainer.json`. Example,
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
+    "ghcr.io/mitul93/devcontainer-features/vtune:latest": {
       "version" : "latest",
       "self_check": false
     }
@@ -31,7 +31,7 @@ Add the feature to your `.devcontainer/devcontainer.json`. Example,
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
+    "ghcr.io/mitul93/devcontainer-features/vtune:latest": {
       "version": "latest"
     }
   }
@@ -51,7 +51,7 @@ Also add to your `devcontainer.json`:
 ```json
 {
   "features": {
-    "ghcr.io/mitul93/devcontainer-feature-vtune/vtune:1": {
+    "ghcr.io/mitul93/devcontainer-features/vtune:latest": {
       "version": "2025.9.0",
       "self_check": true
     }
