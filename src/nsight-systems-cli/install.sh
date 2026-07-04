@@ -111,6 +111,15 @@ fi
 # ── Install: Nsight Systems CLI ───────────────────────────────────────────────
 install_package "nsight-systems-cli" "${VERSION}"
 
+# ── Persistent PATH Environment variable ──────────────────────────────────────
+cat << 'EOF' >> /etc/profile.d/devcontainer-feature-nsight-systems-cli.sh
+NSYS_HOST_LINUX_DIR=$(find /opt/nvidia/nsight-systems-cli -mindepth 2 -maxdepth 2 -type d -name 'host-linux-*' | sort -V | tail -n1)
+
+if [ -n "$NSYS_HOST_LINUX_DIR" ]; then
+    export PATH="$PATH:$NSYS_HOST_LINUX_DIR"
+fi
+EOF
+
 # ── Cleanup ───────────────────────────────────────────────────────────────────
 apt-get autoremove -y
 apt-get clean
