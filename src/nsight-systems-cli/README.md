@@ -2,16 +2,18 @@
 
 A [devcontainer feature](https://containers.dev/implementors/features/) that installs [NVIDIA Nsight Sytems CLI](https://developer.nvidia.com/nsight-systems) via NVIDIA's official public APT repository.
 
-## Usage
+## Container OS Support
+
+This Feature only works on Debian/Ubuntu-based container images.
+
+## Example Usage
 
 Add the feature to your `.devcontainer/devcontainer.json`. Example,
 
 ```json
-{
-  "features": {
-    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
-      "version" : "latest",
-    }
+"features": {
+  "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
+    "version" : "latest",
   }
 }
 ```
@@ -30,10 +32,16 @@ To use a **specific feature version**, append the version tag to the feature ref
 "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:1.1.0": {}
 ```
 
->[!NOTE]
+>[!INFO]
 All published feature versions are available at:
 https://github.com/mitul93/devcontainer-features/pkgs/container/devcontainer-features%2Fnsight-systems-cli/versions
 
+## Verify installation and Check capabilities
+
+``` shell
+$ nsys --version
+$ nsys status -e
+```
 ## Available Versions
 
 To find all available versions, browse the `Packages` index for your platform at:
@@ -73,22 +81,18 @@ Use only the `YYYY.MAJOR.MINOR` part as the [version option](#options) — for e
 ### Latest version
 
 ```json
-{
-  "features": {
-    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
-      "version": "latest"
-    }
+"features": {
+  "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
+    "version": "latest"
   }
 }
 ```
 ### Pinned version
 
 ```json
-{
-  "features": {
-    "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
-      "version": "2026.3.1"
-    }
+"features": {
+  "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
+    "version": "2026.3.1"
   }
 }
 ```
@@ -96,12 +100,6 @@ Use only the `YYYY.MAJOR.MINOR` part as the [version option](#options) — for e
 ## Capabilities required
 
 TODO
-
-## Verify the installation:
-
-```bash
-nsys --version
-```
 
 ## Limitations
 
