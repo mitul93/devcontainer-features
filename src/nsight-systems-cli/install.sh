@@ -120,7 +120,7 @@ if [ -n "$NSYS_HOST_LINUX_DIR" ]; then
     export PATH="$PATH:$NSYS_HOST_LINUX_DIR"
 fi
 EOF
-chmox +x /etc/profile.d/devcontainer-feature-nsight-systems-cli.sh
+chmod +x /etc/profile.d/devcontainer-feature-nsight-systems-cli.sh
 
 # ── Cleanup ───────────────────────────────────────────────────────────────────
 apt-get autoremove -y
