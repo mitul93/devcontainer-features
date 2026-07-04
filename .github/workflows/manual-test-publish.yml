@@ -20,7 +20,7 @@ jobs:
     steps:
       # ── Checkout repo ───────────────────────────────
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # ── Validate feature folder exists ─────────────
       - name: Validate feature folder
