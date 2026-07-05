@@ -13,7 +13,7 @@ Add the feature to your `.devcontainer/devcontainer.json`. Example,
 ```json
 "features": {
   "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:latest": {
-    "version" : "latest",
+    "version" : "latest"
   }
 }
 ```
