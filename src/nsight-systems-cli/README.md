@@ -32,7 +32,7 @@ To use a **specific feature version**, append the version tag to the feature ref
 "ghcr.io/mitul93/devcontainer-features/nsight-systems-cli:1.1.0": {}
 ```
 
->[!INFO]
+>[!NOTE]
 All published feature versions are available at:
 https://github.com/mitul93/devcontainer-features/pkgs/container/devcontainer-features%2Fnsight-systems-cli/versions
 
