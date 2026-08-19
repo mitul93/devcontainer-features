@@ -10,7 +10,7 @@
     "version": {
       "type": "string",
       "default": "latest",
-      "description": "Version of intel-oneapi-vtune to install (e.g. '2025.9.0' or 'latest')"
+      "description": "Version of intel-oneapi-vtune to install (e.g. '2025.9.0-10' or 'latest')"
     },
     "self_check": {
       "type": "boolean",

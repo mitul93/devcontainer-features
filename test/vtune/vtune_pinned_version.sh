@@ -7,7 +7,7 @@ set -euo pipefail
 # shellcheck disable=SC1091
 source dev-container-features-test-lib
 
-check "vtune version is 2025.9.0" bash -c "vtune --version > /dev/null"
+check "vtune version is 2025.9.0-10" bash -c "vtune --version > /dev/null"
 
 # Report result
 reportResults
