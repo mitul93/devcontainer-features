@@ -47,8 +47,6 @@ intel-oneapi-vtune:
 | `version` | string | `latest` | VTune version to install (e.g. `2025.9.0-10`). Use `latest` for the newest available. |
 | `self_check` | boolean | `false` | Run `vtune-self-checker.sh` after install to validate the setup. |
 
-## Check available versions
-
 
 ## Examples
 
@@ -76,7 +74,22 @@ intel-oneapi-vtune:
 }
 ```
 
-### Running the VTune Backend in a Container
+## Capabilities required
+
+Depending on the options you enable, add the following to your `devcontainer.json`:
+
+```json
+"capAdd": ["SYS_PTRACE", "SYS_ADMIN"],
+"securityOpt": ["seccomp=unconfined"]
+```
+
+| Capability | Required for |
+|---|---|
+| `SYS_PTRACE` | Basic VTune profiling |
+| `SYS_ADMIN` | Hardware sampling drivers (`sampling_drivers=true`) |
+| `seccomp=unconfined` | VTune system call tracing |
+
+## Running the VTune Backend in a Container
 
 Launching the VTune GUI directly inside the container requires installing a large number of apt packages, which may not remain compatible across subsequent releases; running the VTune backend in the container is a much easier and more reliable solution.
 
@@ -101,21 +114,6 @@ devcontainer@74a5ce9b6876:/ sed -i 's/type: passphrase/type: anonymous/' \
 
 devcontainer@74a5ce9b6876:/ vtune-backend --allow-remote-ui --web-port=7788 --enable-server-profiling --usage-statistics-opt-out
 ```
-
-## Capabilities required
-
-Depending on the options you enable, add the following to your `devcontainer.json`:
-
-```json
-"capAdd": ["SYS_PTRACE", "SYS_ADMIN"],
-"securityOpt": ["seccomp=unconfined"]
-```
-
-| Capability | Required for |
-|---|---|
-| `SYS_PTRACE` | Basic VTune profiling |
-| `SYS_ADMIN` | Hardware sampling drivers (`sampling_drivers=true`) |
-| `seccomp=unconfined` | VTune system call tracing |
 
 ## Environment
 
